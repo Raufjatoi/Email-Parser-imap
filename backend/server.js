@@ -6,16 +6,6 @@ const { simpleParser } = require('mailparser');
 const app = express();
 const port = 3001;
 
-// Updated CORS configuration to allow requests from your Netlify domain
-app.use(cors({
-  origin: '*', // This allows requests from any origin - for development only
-  methods: ['GET', 'POST', 'OPTIONS'],
-  credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
-// For a more secure production setup, use this instead:
-/*
 app.use(cors({
   origin: [
     'https://subtle-phoenix-26053f.netlify.app', 
@@ -25,7 +15,6 @@ app.use(cors({
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
-*/
 
 app.use(express.json());
 
