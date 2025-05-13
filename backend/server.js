@@ -6,13 +6,27 @@ const { simpleParser } = require('mailparser');
 const app = express();
 const port = 3001;
 
+// Updated CORS configuration to allow requests from your Netlify domain
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://subtle-phoenix-26053f.netlify.app/', 'https://your-frontend-domain.netlify.app'] 
-    : 'http://localhost:8080',
-  methods: ['GET', 'POST'],
-  credentials: true
+  origin: '*', // This allows requests from any origin - for development only
+  methods: ['GET', 'POST', 'OPTIONS'],
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// For a more secure production setup, use this instead:
+/*
+app.use(cors({
+  origin: [
+    'https://subtle-phoenix-26053f.netlify.app', 
+    'http://localhost:8080'
+  ],
+  methods: ['GET', 'POST', 'OPTIONS'],
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+*/
+
 app.use(express.json());
 
 // Test endpoint
@@ -139,5 +153,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 // Export the Express app for Vercel
 module.exports = app;
+
 
 

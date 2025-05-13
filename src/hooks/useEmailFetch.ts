@@ -18,8 +18,8 @@ export const useEmailFetch = () => {
     try {
       console.log("Connecting to email with config:", config);
       
-      // Make API call to backend
-      const response = await fetch(`${API_URL}/connect`, {
+      // Make API call to backend - update the endpoint to match your backend
+      const response = await fetch(`${API_URL}/api/connect`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,6 +75,7 @@ export const useEmailFetch = () => {
     fetchEmails
   };
 };
+
 
 
 
