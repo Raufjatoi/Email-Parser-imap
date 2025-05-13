@@ -34,6 +34,11 @@ app.get('/', (req, res) => {
   res.send('Email Parser Backend is running');
 });
 
+// Add a test endpoint to verify CORS
+app.get('/api/test-cors', (req, res) => {
+  res.json({ message: 'CORS is working!' });
+});
+
 // Connect to email and fetch emails
 app.post('/api/connect', async (req, res) => {
   const { email, password, imapHost, imapPort, useSSL } = req.body;
@@ -153,6 +158,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 // Export the Express app for Vercel
 module.exports = app;
+
 
 
 
