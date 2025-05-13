@@ -3,7 +3,7 @@ import { Email } from '@/components/EmailList';
 import { EmailConfig } from '@/components/EmailConnect';
 import { toast } from 'sonner';
 
-// Backend API URL
+// Backend API URL - fix the double slash issue
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 export const useEmailFetch = () => {
@@ -18,8 +18,12 @@ export const useEmailFetch = () => {
     try {
       console.log("Connecting to email with config:", config);
       
-      // Make API call to backend - update the endpoint to match your backend
-      const response = await fetch(`${API_URL}/api/connect`, {
+      // Fix the URL construction to avoid double slashes
+      const url = `${API_URL.replace(/\/+$/, '')}/api/connect`;
+      console.log("Connecting to URL:", url);
+      
+      // Make API call to backend
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,6 +79,7 @@ export const useEmailFetch = () => {
     fetchEmails
   };
 };
+
 
 
 
