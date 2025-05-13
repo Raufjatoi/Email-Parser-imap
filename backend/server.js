@@ -6,7 +6,13 @@ const { simpleParser } = require('mailparser');
 const app = express();
 const port = 3001;
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://subtle-phoenix-26053f.netlify.app/', 'https://your-frontend-domain.netlify.app'] 
+    : 'http://localhost:8080',
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Test endpoint
@@ -133,4 +139,5 @@ if (process.env.NODE_ENV !== 'production') {
 
 // Export the Express app for Vercel
 module.exports = app;
+
 
