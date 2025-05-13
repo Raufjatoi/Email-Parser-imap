@@ -8,7 +8,7 @@ const port = 3001;
 
 app.use(cors({
   origin: [
-    'https://email-parser-imap.netlify.app/', 
+    'https://email-parser-imap.netlify.app', 
     'http://localhost:8080'
   ],
   methods: ['GET', 'POST', 'OPTIONS'],
