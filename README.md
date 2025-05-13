@@ -144,5 +144,5 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 Abdul Rauf Jatoi - [website](https://raufjatoi.vercel.app) 
 
-Project Link: [https://github.com/Raufjatoi/email-parser-imap](https://github.com/Raufjatoi/email-parser-imap)
+Project Link: [https://github.com/Raufjatoi/email-parser-imap](https://email-parser-imap.netlify.app/)   
 
